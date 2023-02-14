@@ -1,0 +1,160 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{emilspack}[2023/02/14 Emil's macro package]
+
+
+% Options
+% --------------------------------------------------------------------
+
+\newif\if@amssymb
+\@amssymbtrue
+
+\newif\if@nobeamer
+\@nobeamertrue
+
+\newif\if@redefine
+\@redefinetrue
+
+% Some packages load amssymb, the order might cause issues
+\DeclareOption{noamssymb}{\@amssymbfalse}
+
+% Option for beamer compatability
+\DeclareOption{beamer}{\@nobeamerfalse}
+
+% Option to not redefine anything
+\DeclareOption{noredefine}{\@redefinefalse}
+
+% Throws a warning for unused options
+\DeclareOption*{\OptionNotUsed}
+
+\ProcessOptions
+
+
+% Load packages
+% --------------------------------------------------------------------
+
+% Better enumerate, itemize and description environments
+\if@nobeamer
+  \RequirePackage[shortlabels]{enumitem}
+\fi
+
+% Links
+\RequirePackage{hyperref}
+
+% Colors
+\RequirePackage{xcolor}
+
+% Figures
+\RequirePackage{graphicx}
+
+% Math
+\RequirePackage{amsthm}
+\RequirePackage{mathtools}
+
+\if@amssymb
+  \RequirePackage{amssymb}
+\fi
+
+% Better bold math
+\RequirePackage{bm}
+
+% Cancelling terms in equation
+\RequirePackage[Smaller]{cancel}
+
+
+% Document commands
+% --------------------------------------------------------------------
+
+% Number equation in unnumbered environment
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+
+% Theorem environments
+% --------------------------------------------------------------------
+
+\if@nobeamer
+  \theoremstyle{plain}
+  \newtheorem{theorem}{Theorem}[section]
+  \newtheorem{corollary}{Corollary}[theorem]
+  \newtheorem{lemma}[theorem]{Lemma}
+  \newtheorem{proposition}[theorem]{Proposition}
+
+  \theoremstyle{definition}
+  \newtheorem{definition}[theorem]{Definition}
+  \newtheorem{example}[theorem]{Example}
+  \newtheorem*{claim}{Claim}
+
+  \theoremstyle{remark}
+  \newtheorem{remark}{Remark}[theorem]
+\fi
+
+
+% Math commands
+% --------------------------------------------------------------------
+
+% Common sets
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+% New arrow names
+\newcommand{\into}{\hookrightarrow}
+\newcommand{\onto}{\twoheadrightarrow}
+
+% Math operators
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+\DeclareMathOperator*{\essinf}{ess\,inf}
+
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\spn}{span}
+
+\DeclareMathOperator{\cl}{cl}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator*{\esssupp}{ess\,supp}
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\GL}{GL}
+
+% Operators with specific delimiters
+\DeclarePairedDelimiterXPP\E[1]{\mathbb{E}}{[}{]}{}{#1}
+\DeclarePairedDelimiterXPP\Var[1]{\operatorname{Var}}{[}{]}{}{#1}
+
+% Differential d
+\newcommand{\dd}{\,\mathop{}\!\mathrm{d}}
+
+% Perp before the variable
+\newcommand{\prep}{{}^\perp}
+
+
+% Opinionated redefinitions
+% --------------------------------------------------------------------
+
+\if@redefine
+
+% \Re and \Im exist but are ugly
+\let\Re\undefined
+\let\Im\undefined
+\DeclareMathOperator{\Re}{Re}
+\DeclareMathOperator{\Im}{Im}
+
+% Override \Pr
+\let\Pr\undefined
+\DeclarePairedDelimiterXPP\Pr[1]{\mathbb{P}}{[}{]}{}{#1}
+
+% Certain symbol variants are preferred
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\emptyset}{\varnothing}
+\renewcommand{\leq}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+
+\fi
