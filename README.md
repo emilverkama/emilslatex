@@ -5,6 +5,7 @@ This repository contains my personal classes, packages and snippets for LaTeX, n
 - `emilsart.cls`: my extension of the base article class;
 - `emilshw.cls`: an extension of `emilsart.cls`, specifically meant for homework solutions; and
 - `latex.json`: snippets to be used with VSCode.
+
 The point is to make LaTeX code easier to both write and read, partly inspired by [Okko Makkonen](https://okkomakkonen.fi).
 
 ## Installation
