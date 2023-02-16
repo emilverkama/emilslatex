@@ -45,6 +45,7 @@
 
 % Figures
 \RequirePackage{graphicx}
+\RequirePackage{subcaption}
 
 % Math
 \RequirePackage{amsthm}
@@ -139,22 +140,20 @@
 % --------------------------------------------------------------------
 
 \if@redefine
+  % \Re and \Im exist but are ugly
+  \let\Re\undefined
+  \let\Im\undefined
+  \DeclareMathOperator{\Re}{Re}
+  \DeclareMathOperator{\Im}{Im}
 
-% \Re and \Im exist but are ugly
-\let\Re\undefined
-\let\Im\undefined
-\DeclareMathOperator{\Re}{Re}
-\DeclareMathOperator{\Im}{Im}
+  % Override \Pr
+  \let\Pr\undefined
+  \DeclarePairedDelimiterXPP\Pr[1]{\mathbb{P}}{[}{]}{}{#1}
 
-% Override \Pr
-\let\Pr\undefined
-\DeclarePairedDelimiterXPP\Pr[1]{\mathbb{P}}{[}{]}{}{#1}
-
-% Certain symbol variants are preferred
-\renewcommand{\epsilon}{\varepsilon}
-\renewcommand{\phi}{\varphi}
-\renewcommand{\emptyset}{\varnothing}
-\renewcommand{\leq}{\leqslant}
-\renewcommand{\geq}{\geqslant}
-
+  % Certain symbol variants are preferred
+  \renewcommand{\epsilon}{\varepsilon}
+  \renewcommand{\phi}{\varphi}
+  \renewcommand{\emptyset}{\varnothing}
+  \renewcommand{\leq}{\leqslant}
+  \renewcommand{\geq}{\geqslant}
 \fi

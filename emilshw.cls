@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{emilshw}[2022/07/01 Emil's homework class]
+\ProvidesClass{emilshw}[2023/02/14 Emil's homework class]
 
 
 % Options
@@ -10,6 +10,14 @@
 \ProcessOptions\relax
 \LoadClass{emilsart}
 
+
+% Packages
+% --------------------------------------------------------------------
+
+% Subpar solution for nicer verbatim
+\RequirePackage{fancyvrb}
+
+
 % Setup
 % --------------------------------------------------------------------
 
@@ -17,9 +25,21 @@
 \newcommand{\@coursename}{}
 \newcommand{\coursename}[1]{\renewcommand{\@coursename}{#1}}
 
-% Adds coursename to footnote
-\let\old@title\title
-\renewcommand{\title}[1]{\old@title{#1\thanks{\@coursename}}}
+% Title format
+\setlength{\headheight}{15pt}
+
+\fancypagestyle{title}{%
+    \fancyhf{}%
+    \fancyhead[L]{\@coursename}
+    \fancyhead[R]{\@date}
+    \fancyfoot[C]{\thepage}
+}
+
+\renewcommand{\maketitle}{
+  \thispagestyle{title}
+  {\Large\bfseries\@title} \\[0.5em]
+  \@author
+}
 
 % Formating section titles
 \titleformat{\section}{\large}{{\bfseries Problem \thesection}}{1em}{}
@@ -27,7 +47,7 @@
 % Style for solution environment
 \newtheoremstyle{solution}%
   {\topsep}%
-  {2em}%
+  {.5em}%
   {}%
   {}%
   {\itshape}%

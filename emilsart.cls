@@ -11,16 +11,11 @@
 \newif\if@tikz
 \@tikzfalse
 
-% With the cm option set, no fancy fonts are loaded
+% Choose not to load fancy fonts
 \DeclareOption{cm}{\@nocmfalse}
 
-% Choose whether to load tikz, which might slow down compilation
+% Choose whether to load tikz (might slow down compilation)
 \DeclareOption{tikz}{\@tikztrue}
-
-% Default options to be passed to the article class
-\DeclareOption{a4paper}{\PassOptionsToClass{\CurrentOption}{article}}
-\DeclareOption{12pt}{\PassOptionsToClass{\CurrentOption}{article}}
-\ExecuteOptions{a4paper, 12pt}
 
 % Pass undeclared options to the article class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -34,7 +29,7 @@
 % --------------------------------------------------------------------
 
 % Page geometry
-\RequirePackage[centering]{geometry}
+% \RequirePackage[centering]{geometry}
 
 % Set font encoding, load fonts
 \RequirePackage[T1]{fontenc}
@@ -50,8 +45,6 @@
 \RequirePackage[small]{titlesec}
 
 % Nice figures
-\RequirePackage{subcaption}
-
 \if@tikz
   \RequirePackage{tikz}
   \RequirePackage{pgfplots}
@@ -62,7 +55,6 @@
 
 % Skips instead of indents at new paragraphs
 \RequirePackage{parskip}
-
 
 % Load my macro package
 \if@nocm
@@ -81,13 +73,10 @@
   \null
   \begin{center}%
   \let \footnote \thanks
-    {\Huge \@title} \\[2em]
-    {\large \@author} \\[1em]
-    \@date
-  \end{center}%
-  \par
-  \vskip 3em}
-
+    {\Large\MakeUppercase{\@title} \\}\vskip 1em
+    {\@author \\}\vskip 0.3em
+    \@date \\[2em]
+  \end{center}}
 
 % Tikz: libraries and some useful macros
 \if@tikz
