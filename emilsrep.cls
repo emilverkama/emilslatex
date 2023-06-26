@@ -22,14 +22,14 @@
 
 % Load the report class
 \ProcessOptions\relax
-\LoadClass[notitlepage]{report}
+\LoadClass[notitlepage, twoside]{report}
 
 
 % Packages
 % --------------------------------------------------------------------
 
 % Page geometry
-% \RequirePackage[centering]{geometry}
+\RequirePackage[hscale=0.7, vscale=0.8, top=25mm, hcentering, headsep=5mm]{geometry}
 
 % Set font encoding, load fonts
 \RequirePackage[T1]{fontenc}
@@ -42,7 +42,7 @@
 
 % Formatting for headers, footers and titles
 \RequirePackage{fancyhdr}
-\RequirePackage[small]{titlesec}
+\RequirePackage[center, tiny]{titlesec}
 
 % Nice figures
 \if@tikz
@@ -66,6 +66,17 @@
 
 % Setup
 % --------------------------------------------------------------------
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}{}}
+\fancyhf{}
+\fancyhead[CE]{\textit{\leftmark}}
+\fancyhead[CO]{\textit{\rightmark}}
+\fancyhead[LE,RO]{\thepage}
+\setlength{\headheight}{15pt}
+\renewcommand{\headrulewidth}{0pt}
+
 
 % Document title formatting
 \def\@maketitle{%
