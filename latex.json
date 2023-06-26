@@ -138,5 +138,19 @@
       "  $0",
       "\\end{${1|matrix,pmatrix,bmatrix,Bmatrix,vmatrix,Vmatrix,smallmatrix,psmallmatrix,bsmallmatrix,Bsmallmatrix,vsmallmatrix,Vsmallmatrix|}}"
     ]
+  },
+
+  "Standard template": {
+    "prefix": "template",
+    "body": [
+      "\\documentclass{emilsart}",
+      "\\title{$1}",
+      "\\author{Emil Verkama}",
+      "",
+      "\\begin{document}",
+      "\\maketitle",
+      "$0",
+      "\\end{document}"
+    ]
   }
 }
