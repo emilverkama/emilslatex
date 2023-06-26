@@ -3,6 +3,7 @@
 This repository contains my personal classes, packages and snippets for LaTeX, namely:
 - `emilspack.sty`: loads often-used packages for mathematical typesetting and defines some relatively conservative macros;
 - `emilsart.cls`: my extension of the base article class;
+- `emilsrep.cls`: my extension of the base report class;
 - `emilshw.cls`: an extension of `emilsart.cls`, specifically meant for homework solutions; and
 - `latex.json`: snippets to be used with VSCode.
 
