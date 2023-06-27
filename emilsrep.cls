@@ -67,6 +67,7 @@
 % Setup
 % --------------------------------------------------------------------
 
+% Header formatting
 \pagestyle{fancy}
 \renewcommand{\chaptermark}[1]{\markboth{#1}{}}
 \renewcommand{\sectionmark}[1]{\markright{#1}{}}
@@ -77,6 +78,8 @@
 \setlength{\headheight}{15pt}
 \renewcommand{\headrulewidth}{0pt}
 
+% Table of contents formatting
+\renewcommand{\@dotsep}{10000}
 
 % Document title formatting
 \def\@maketitle{%
