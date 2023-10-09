@@ -5,6 +5,12 @@
 % Options
 % --------------------------------------------------------------------
 
+\newif\if@nosol
+\@nosolfalse
+
+% Choose not to show solutions
+\DeclareOption{nosol}{\@nosoltrue}
+
 % We extend my article class
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{emilsart}}
 \ProcessOptions\relax
@@ -14,8 +20,11 @@
 % Packages
 % --------------------------------------------------------------------
 
-% Subpar solution for nicer verbatim
+% Bad solution for nicer verbatim
 \RequirePackage{fancyvrb}
+
+% Bad solution for hiding solutions (breaks synctex)
+\RequirePackage{version}
 
 
 % Setup
@@ -30,19 +39,32 @@
 
 \fancypagestyle{title}{%
     \fancyhf{}%
-    \fancyhead[L]{\@coursename}
-    \fancyhead[R]{\@date}
+    \fancyhead[L]{\@author}
+    \fancyhead[R]{\@coursename}
     \fancyfoot[C]{\thepage}
 }
 
 \renewcommand{\maketitle}{
   \thispagestyle{title}
-  {\Large\bfseries\@title} \\[0.5em]
-  \@author
+  \begin{center}
+    {\Large\MakeUppercase{\@title}} \\[0.5em]
+    \@date \\[2.5em]
+  \end{center}
 }
 
 % Formating section titles
 \titleformat{\section}{\large}{{\bfseries Problem \thesection}}{1em}{}
+
+% Style for the exercise environment
+\newtheoremstyle{exercise}%
+  {\topsep}%
+  {.5em}%
+  {}%
+  {}%
+  {\bfseries}%
+  {.}%
+  {.5em}%
+  {}
 
 % Style for solution environment
 \newtheoremstyle{solution}%
@@ -52,11 +74,16 @@
   {}%
   {\itshape}%
   {.}%
-  {.5em}%
+  {0.5em}%
   {}
 
 % Defining the exercise and solution environments
-\theoremstyle{plain}
-\newtheorem*{exercise}{Exercise}
+\theoremstyle{exercise}
+\newtheorem{exercise}{Exercise}
 \theoremstyle{solution}
 \newtheorem*{solution}{Solution}
+
+\if@nosol
+  \excludeversion{solution}
+  \excludeversion{proof}
+\fi
