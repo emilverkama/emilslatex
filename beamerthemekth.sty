@@ -1,0 +1,131 @@
+\mode<presentation>
+
+
+% Options
+% --------------------------------------------------------------------
+
+\newif\if@pattern
+\@patterntrue
+
+\newif\if@sections
+\@sectionsfalse
+
+% Choose to remove the KTH line pattern
+\DeclareOptionBeamer{nopattern}{\@patternfalse}
+
+% Choose to transition frames at new sections
+\DeclareOptionBeamer{sections}{\@sectionstrue}
+
+% Load the emil theme
+\ProcessOptionsBeamer\relax
+\usetheme{emil}
+
+
+% Colors and fonts
+% --------------------------------------------------------------------
+
+% Make sure the KTH colors are available
+\RequirePackage{kthlogo}
+
+% Colors
+\setbeamercolor{title}{fg=kthMarinblue}
+\setbeamercolor{author}{fg=kthMarinblue}
+\setbeamercolor{date}{fg=black}
+\setbeamercolor{item}{fg=kthMarinblue}
+\setbeamercolor{frametitle}{fg=kthMarinblue}
+\setbeamercolor{block title}{bg=kthBrick, fg=white}
+\setbeamercolor{block body}{bg=kthLightgray!50}
+\setbeamercolor{alerted text}{fg=kthBrick}
+\setbeamercolor{author in head/foot}{fg=kthMarinblue}
+\setbeamercolor{background canvas}{bg=white}
+
+% Fonts
+\setbeamerfont{title}{size=\Huge, series=\bfseries}
+
+
+% Layout
+% --------------------------------------------------------------------
+
+% Special background for title and transition frames
+\newcommand{\specialframe}
+{%
+  \begin{tikzpicture}[overlay, remember picture]
+    \fill[color=kthSand] (current page.center) circle (\the\paperwidth);%
+    \if@pattern
+      \node[anchor=center, xshift=3.6cm] at (current page.center) 
+      {%
+        \kthpattern{white}{169}{0.325}%
+      };
+    \fi%
+  \end{tikzpicture}
+}
+
+% Transition frames
+\if@sections
+  \AtBeginSection
+  {%
+    \begin{frame}
+      \specialframe%
+      \begin{tikzpicture}[overlay, remember picture]
+        \node[anchor=center] at (current page.center) 
+        {%
+          {\usebeamerfont{title}\usebeamercolor[fg]{title}\insertsectionhead}%
+        };
+      \end{tikzpicture}
+    \end{frame}
+  }
+\fi
+
+% Title frame layout
+\defbeamertemplate*{title page}{kth}
+{%
+  \addtocounter{framenumber}{-1}%
+  \specialframe%
+  \vfill%
+  %
+  \ifx\inserttitlegraphic\@empty\else
+    \begin{beamercolorbox}[center]{titlegraphic}
+      \inserttitlegraphic%
+    \end{beamercolorbox}
+    \vskip3em%
+  \fi%
+  %
+  \begin{beamercolorbox}[center]{title}
+    \usebeamerfont{title}\inserttitle\par%
+    \ifx\insertsubtitle\@empty
+    \else
+      \vskip0.25em%
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+    \fi%
+  \end{beamercolorbox}
+  \vskip1.5em%
+  %
+  \begin{beamercolorbox}[center]{author}
+    \usebeamerfont{author}\insertshortauthor%
+  \end{beamercolorbox}
+  \vskip0.5em%
+  %
+  \ifx\insertdate\@empty\else
+    \begin{beamercolorbox}[center]{date}
+      \usebeamerfont{date}\insertdate%
+    \end{beamercolorbox}
+  \fi%
+}
+
+% Command to print full author info if the title page is too small
+\newcommand{\authorpage}
+{%
+  \addtocounter{framenumber}{-1}%
+  \vfill%
+  \begin{beamercolorbox}[left]{author}
+    \usebeamerfont{author}\insertauthor%
+  \end{beamercolorbox}
+  \vskip2em%
+  \ifx\insertinstitute\@empty\else
+    \begin{beamercolorbox}[left]{institute}
+      \usebeamerfont{institute}\insertinstitute%
+    \end{beamercolorbox}
+  \fi%
+}
+
+\mode<all>

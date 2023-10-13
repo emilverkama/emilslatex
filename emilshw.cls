@@ -58,7 +58,7 @@
 % Style for the exercise environment
 \newtheoremstyle{exercise}%
   {\topsep}%
-  {.5em}%
+  {\topsep}%
   {}%
   {}%
   {\bfseries}%

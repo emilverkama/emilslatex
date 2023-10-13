@@ -1,16 +1,25 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{kthlogo}[2023/02/14 KTH logos and colors]
 
-% NOTE: A folder with the kth logos has to be included in the same directory as this file.
+% NOTE: The kthlogo folder has to be located in the same directory as this file.
+% These are the official KTH logos, colors and patterns from:
+% https://intra.kth.se/administration/kommunikation/varumarke/grafiskprofil
+% To ensure compliant usage, consult the information provided there.
 
 % Requirements for graphics and colors
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
 
-% Logo commands
-\newcommand{\kthlogoblue}[1]{\includegraphics[width=#1]{kthlogo/blue.pdf}}
-\newcommand{\kthlogoblack}[1]{\includegraphics[width=#1]{kthlogo/black.pdf}}
-\newcommand{\kthlogowhite}[1]{\includegraphics[width=#1]{kthlogo/white.pdf}}
+% Logo commands:
+% Argument 1: color (blue, black or white)
+% Argument 2: width
+\newcommand{\kthlogo}[2]{\includegraphics[width=#2]{kthlogo/logo/#1.pdf}}
+
+% Line patterns:
+% Argument 1: color (digitalblue, kthblue, lightblue, marinblue, sand or white)
+% Argument 2: aspect ratio (11, 169, 916, Ah or Av)
+% Argument 3: scale (real number in [0,1])
+\newcommand{\kthpattern}[3]{\includegraphics[scale=#3]{kthlogo/pattern/#1#2.pdf}}
 
 % Main colors
 \definecolor{kthSand}{RGB}{235,229,224}
@@ -33,6 +42,8 @@
 \definecolor{kthGray}{RGB}{165,165,165}
 \definecolor{kthLightgreen}{RGB}{199,235,186}
 \definecolor{kthLightturquoise}{RGB}{178,224,224}
-\definecolor{kthLightBrick}{RGB}{255,204,196}
+\definecolor{kthLightbrick}{RGB}{255,204,196}
 \definecolor{kthLightyellow}{RGB}{255,240,176}
 \definecolor{kthLightgray}{RGB}{230,230,230}
+\definecolor{kthOffblack}{RGB}{33,33,33}
+\definecolor{kthOffwhite}{RGB}{252,252,252}

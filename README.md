@@ -1,11 +1,13 @@
 # Emil's LaTeX
 
 This repository contains my personal classes, packages and snippets for LaTeX, namely:
-- `emilspack.sty`: loads often-used packages for mathematical typesetting and defines some relatively conservative macros;
-- `emilsart.cls`: my extension of the base article class;
-- `emilsrep.cls`: my extension of the base report class;
-- `emilshw.cls`: an extension of `emilsart.cls`, specifically meant for homework solutions;
-- `kthlogo.sty`: a package implementing the KTH logo and colors; and
+- `emilspack.sty`: loads often-used packages for mathematical typesetting and defines some relatively conservative macros
+- `kthlogo.sty`: package implementing the KTH logo, colors and line patterns
+- `emilsart.cls`: extension of the base article class
+- `emilsrep.cls`: extension of the base report class
+- `emilshw.cls`: extension of `emilsart.cls`, specifically meant for homework sheets and solutions
+- `beamerthemeemil.cls`: nice and simple beamer template
+- `beamerthemekth.cls`: extension of `beamerthemeemil.cls` implementing a KTH-compliant theme
 - `latex.json`: snippets to be used with VSCode.
 
 As per the ideological guidelines of [Okko Makkonen](https://okkomakkonen.fi), the point is to make LaTeX code both faster to write and easier to read.

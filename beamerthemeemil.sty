@@ -1,0 +1,120 @@
+\mode<presentation>
+
+
+% Packages
+% --------------------------------------------------------------------
+
+% My macro package
+\RequirePackage[beamer, noamssymb]{emilspack}
+
+% Tikz for nice figures
+\RequirePackage{tikz, pgfplots}
+
+% Open Sans for main font, newtx for math (not great)
+\RequirePackage[vvarbb, nohelv]{newtx}
+\RequirePackage[default, scale=0.9]{opensans}
+
+
+% Setup
+% --------------------------------------------------------------------
+
+% Font settings
+\usefonttheme{professionalfonts}
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+\setbeamerfont{title}{size=\huge, series=\bfseries}
+\setbeamerfont{author}{size=\normalsize, series=\bfseries}
+\setbeamerfont{institute}{size=\normalsize, series=\mdseries}
+\setbeamerfont{date}{size=\footnotesize, shape=\itshape}
+\setbeamerfont{enumerate item}{series=\bfseries}
+
+% Template settings
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize item}[circle]
+
+% Tikz setup
+\usetikzlibrary{calc, through, backgrounds, intersections, cd, perspective, 3d}
+\tikzstyle{rpath}=[rounded corners=0.1pt]
+\tikzstyle{dot}=[draw, shape=circle, fill=black, inner sep=0pt, minimum size=2pt]
+\pgfplotsset{width=7cm,compat=newest}
+
+% Straight barb arrows fit better with newtx
+\tikzset{>={Straight Barb[scale=0.8]}}
+\tikzcdset{arrow style=tikz}
+
+% Useful command to make vertical spacing behave
+\newcommand{\bigfill}{\vskip0pt plus 1filll}
+
+
+% Layout
+% --------------------------------------------------------------------
+
+% Title frame layout
+\defbeamertemplate*{title page}{emil}
+{%
+  \addtocounter{framenumber}{-1}%
+  %
+  \vskip1cm%
+  \begin{beamercolorbox}[left]{title}
+    \usebeamerfont{title}\inserttitle\par%
+    \ifx\insertsubtitle\@empty
+    \else
+      \vskip0.25em%
+      {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+    \fi%
+  \end{beamercolorbox}
+  \vskip1.5em%
+  %
+  \begin{beamercolorbox}[left]{author}
+    \usebeamerfont{author}\insertauthor%
+  \end{beamercolorbox}
+  \vskip0.8em%
+  %
+  \ifx\insertinstitute\@empty\else
+    \begin{beamercolorbox}[left]{institute}
+      \usebeamerfont{institute}\insertinstitute%
+    \end{beamercolorbox}
+    \vskip0.6em%
+  \fi%
+  %
+  \ifx\insertdate\@empty\else
+    \begin{beamercolorbox}[left]{date}
+      \usebeamerfont{date}\insertdate%
+    \end{beamercolorbox}
+  \fi%
+  %
+  \bigfill%
+  \ifx\inserttitlegraphic\@empty\else
+    \begin{beamercolorbox}[right]{titlegraphic}
+      \inserttitlegraphic%
+    \end{beamercolorbox}
+    \vskip0.3cm%
+  \fi%
+}
+
+% Frame titles
+\defbeamertemplate*{frametitle}{emil}
+{%
+  \vskip1em%
+  \begin{beamercolorbox}[left]{frametitle}
+    \usebeamerfont{frametitle}%
+    \insertframetitle\par%
+    \ifx\insertframesubtitle\@empty
+    \else
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\par}%
+    \fi%
+  \end{beamercolorbox}
+}
+
+% Footline
+\defbeamertemplate*{footline}{emil}
+{%
+  \leavevmode%
+  \begin{beamercolorbox}[wd=\textwidth, ht=2.5ex, dp=0.3cm, leftskip=.3cm, rightskip=.3cm plus1fil]{page number in head/foot}
+    \hfill\usebeamerfont{page number in head/foot}%
+    \ifnum\theframenumber>0
+      \insertframenumber~/~\inserttotalframenumber%
+    \fi%
+  \end{beamercolorbox}
+}
+
+\mode<all>

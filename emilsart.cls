@@ -29,7 +29,6 @@
 % --------------------------------------------------------------------
 
 % Page geometry
-% \RequirePackage[centering]{geometry}
 \RequirePackage[hscale=0.7, vscale=0.8, top=25mm, hcentering, headsep=5mm]{geometry}
 
 % Set font encoding, load fonts
