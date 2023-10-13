@@ -6,8 +6,8 @@ This repository contains my personal classes, packages and snippets for LaTeX, n
 - `emilsart.cls`: extension of the base article class
 - `emilsrep.cls`: extension of the base report class
 - `emilshw.cls`: extension of `emilsart.cls`, specifically meant for homework sheets and solutions
-- `beamerthemeemil.cls`: nice and simple beamer template
-- `beamerthemekth.cls`: extension of `beamerthemeemil.cls` implementing a KTH-compliant theme
+- `beamerthemeemil.sty`: nice and simple beamer template
+- `beamerthemekth.sty`: extension of `beamerthemeemil.sty` implementing a KTH-compliant theme
 - `latex.json`: snippets to be used with VSCode.
 
 As per the ideological guidelines of [Okko Makkonen](https://okkomakkonen.fi), the point is to make LaTeX code both faster to write and easier to read.
