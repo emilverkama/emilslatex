@@ -35,7 +35,8 @@
 \RequirePackage[T1]{fontenc}
 
 \if@nocm
-  \RequirePackage[vvarbb, amsthm, theoremfont]{newtx}
+  \RequirePackage[vvarbb, amsthm, theoremfont, nott]{newtx}
+  \RequirePackage[scaled=0.8]{beramono}
 \else
   \RequirePackage{lmodern}
 \fi
@@ -82,7 +83,7 @@
 \if@tikz
   \usetikzlibrary{calc, through, backgrounds, intersections, cd, perspective, 3d}
   \tikzstyle{rpath}=[rounded corners=0.1pt]
-  \tikzstyle{dot}=[draw, shape=circle, fill=black, inner sep=0pt, minimum size=2pt]
+  \tikzstyle{dot}=[draw, shape=circle, fill=black, inner sep=0pt, minimum size=3pt]
   \pgfplotsset{width=7cm,compat=newest}
 
   % Straight barb arrows fit better with newtx

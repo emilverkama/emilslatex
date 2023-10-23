@@ -152,5 +152,20 @@
       "$0",
       "\\end{document}"
     ]
+  },
+
+  "Homework template": {
+    "prefix": "hwtemplate",
+    "body": [
+      "\\documentclass{emilshw}",
+      "\\title{$1}",
+      "\\author{Emil Verkama}",
+      "\\coursename{$2}",
+      "",
+      "\\begin{document}",
+      "\\maketitle",
+      "$0",
+      "\\end{document}"
+    ]
   }
 }
