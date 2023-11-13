@@ -73,56 +73,63 @@
   "Left-right parenthesis": {
     "prefix": "lrp",
     "body": [
-      "\\left( $1 \\right)$0"
+      "\\left($1\\right)$0"
     ]
   },
 
   "Left-right bracket": {
     "prefix": "lrb",
     "body": [
-      "\\left[ $1 \\right]$0"
+      "\\left[$1\\right]$0"
     ]
   },
 
   "Left-right braces": {
     "prefix": "lrbb",
     "body": [
-      "\\left\\{ $1 \\right\\\\}$0"
+      "\\left\\{$1\\right\\\\}$0"
     ]
   },
 
   "Left-right vertical": {
     "prefix": "lrv",
     "body": [
-      "\\left| $1 \\right|$0"
+      "\\left|$1\\right|$0"
     ]
   },
 
   "Left-right double vertical": {
     "prefix": "lrV",
     "body": [
-      "\\left\\lVert $1 \\right\\lVert$0"
+      "\\left\\lVert$1\\right\\lVert$0"
     ]
   },
 
   "Left-right angle": {
     "prefix": "lra",
     "body": [
-      "\\left\\langle $1 \\right\\rangle$0"
+      "\\left\\langle$1\\right\\rangle$0"
     ]
   },
 
   "Left-right floor": {
     "prefix": "lrf",
     "body": [
-      "\\left\\lfloor $1 \\right\\rfloor)$0"
+      "\\left\\lfloor$1\\right\\rfloor)$0"
     ]
   },
 
   "Left-right ceiling": {
     "prefix": "lrc",
     "body": [
-      "\\left\\lceil $1 \\right\\rceil$0"
+      "\\left\\lceil$1\\right\\rceil$0"
+    ]
+  },
+
+  "Big delimeters": { 
+    "prefix": "big",
+    "body": [
+      "\\big$1$2\\big$1$0"
     ]
   },
 
